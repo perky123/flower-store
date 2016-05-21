@@ -253,6 +253,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   paperclip
   pg
   rails (= 4.2.2)

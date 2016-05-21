@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :profiles
   #get ':user_name', to: 'profiles#show', as: :profile  
  
-  #get '/cart/:id' => 'cart#remove'  #allows user to remove to cart products
+  get '/cart/:id' => 'cart#remove'  #allows user to remove to cart products
  
   resources :charges
   
@@ -40,7 +40,11 @@ Rails.application.routes.draw do
 
   get 'charges/new'
 
-
+  resources :login do 
+    collection do
+      get 'verify'
+    end
+  end
   #post 'product/:id', to: 'cart#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
