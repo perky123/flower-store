@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
   get 'charges/new'
 
+  post 'charges/create'
+
   resources :login do 
     collection do
       get 'verify'
