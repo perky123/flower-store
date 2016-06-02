@@ -1,9 +1,30 @@
 <!-- catalog page -->
+<div class="panel panel-default">
 <p id="notice"><%= notice %></p>
 
 <h1>鲜花列表</h1><br><br>
+  <div class="order-spec-query panel-heading">
+  <ul class="nav nav-pills" role="tablist">
 
-<table>
+      <%= search_form_for @q, url: products_path do |f| %>
+        <li class="col-lg-8 query-iform">
+          <%= f.search_field :title_cont, class: "form-control", placeholder:"请输入鲜花名..." %>
+        </li>
+
+        <li class="col-lg-3 query-iform">
+        <nobr>
+          <%= f.label "分类"%>
+          <%= f.select :category_eq, Product.all.pluck(:category).uniq, include_blank: true %>
+          <%= f.label "子分类"%>
+          <%= f.select :subcategory_eq, Product.all.pluck(:subcategory).uniq, include_blank: true %>
+          </nobr>
+        </li>
+          <%= f.submit '查找', class: "btn btn-default" %>
+      <% end %>
+
+  </ul>
+  </div>
+<table cellspacing="0" cellpadding="0" class="table table-hover table-bordered panel-body">
   <thead>
     <tr>
       <th>鲜花图片</th>
@@ -59,7 +80,8 @@
 
 
   <div class="panel-footer">
-      <div class="user-paginate">
+      <div class="order-paginate">
       <%= paginate @products %>
       </div>
   </div>
+</div>

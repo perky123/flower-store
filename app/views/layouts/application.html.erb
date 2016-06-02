@@ -18,6 +18,34 @@
   </div>
   
   <div id="sign_in">
+
+  <meta charset="utf-8">
+  <title>jQuery UI 日期选择器（Datepicker） - 默认功能</title>
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="jqueryui/style.css">
+  <script>
+  $(function show() {
+    $( "#datepicker" ).datepicker({
+      showButtonPanel: true
+    });
+  });
+
+  var t = null;
+    t = setTimeout(time,1000);//开始执行
+    function time()
+    {
+       clearTimeout(t);//清除定时器
+       dt = new Date();
+       var h=dt.getHours();
+       var m=dt.getMinutes();
+       var s=dt.getSeconds();
+       document.getElementById("timeShow").innerHTML =  "      "+h+"时"+m+"分"+s+"秒";
+       t = setTimeout(time,1000); //设定定时器，循环执行             
+    } 
+  </script>
+
     <% if user_signed_in? %> 
       <%= link_to "我的账户", users_path(@user) %>
       <%= link_to "退出登录", destroy_user_session_path, method: :delete %>
@@ -29,6 +57,8 @@
       <%= link_to "管理员入口", "/login" %>
       <%= link_to "购物车", cart_path %>
     <% end %>
+  <input type=button value='日历'id="datepicker" onclick="javascript:show();">
+  <label id="timeShow" style="color:white"></lable>
   </div>
 
 </nav>  
